@@ -1,0 +1,42 @@
+#!/bin/sh
+
+
+
+# Run jUnit tests
+echo "+ Run jUnit tests"
+if ./gradlew clean test  ;then
+	indent "jUnit tests passed" 
+else
+	indent "jUnit tests not passed. You are not allowed to push this branch"
+	exit 1
+fi
+
+# Start android emulator to be able to run instrumentation tests
+echo "+ Start android emulator -no-window"
+emulator @"$emulator_name" -no-window -wipe-data &
+
+indent "Waiting for emulator to start"
+WAIT_CMD="adb wait-for-device shell getprop init.svc.bootanim"
+until $WAIT_CMD | grep -m 1 stopped; do
+	indent "wait ..."
+	sleep 1
+done
+indent "Emulator started"
+
+# Run android instrumented tests
+echo "+ Run Android instrumented tests"
+./gradlew connectedAndroidTest test
+status=$?
+if [ $status -eq 0 ]; then
+	indent "Android instrumented tests passed" 
+else
+	indent "Android instrumented tests not passed. You are not allowed to push this branch"
+fi
+
+# Kill emulator whatever the result of test is
+kill_emulator
+if [ ! $status -eq 0 ]; then
+	exit 1
+fi
+
+exit 0

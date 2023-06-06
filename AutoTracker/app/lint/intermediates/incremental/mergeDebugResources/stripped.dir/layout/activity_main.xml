@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9C3AA"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/auto_trackerText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:text="@string/my_text"
+        android:textColor="@color/txtcolor"
+        android:textSize="35sp"
+        app:fontFamily="casual"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/start_journey"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_below="@+id/auto_trackerText"
+        android:background="#000000"
+        android:text="@string/StartJourney"
+        android:textAllCaps="false"
+        android:textSize="19sp"
+        app:backgroundTint="#CFA573"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.085"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auto_trackerText"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <Button
+        android:id="@+id/object_detection"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="#000000"
+        android:text="@string/DetectObjects"
+        android:textAllCaps="false"
+        android:textSize="19sp"
+        app:backgroundTint="#CFA573"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.085"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_journey"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <LinearLayout
+        android:id="@+id/vehicle_speedLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_journey"
+        app:layout_constraintVertical_bias="0.048">
+
+        <TextView
+            android:id="@+id/speed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="90dp"
+            android:text="@string/VehicleSpeed"
+            android:textColor="@color/txtcolor"
+            android:textSize="25sp"
+            android:visibility="invisible"
+            app:fontFamily="casual" />
+
+        <TextView
+            android:id="@+id/speed_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-90dp"
+            android:text=""
+            android:textColor="@color/txtcolor"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:fontFamily="casual" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/speed_limitLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_speedLinearLayout"
+        app:layout_constraintVertical_bias="0.048">
+
+        <TextView
+            android:id="@+id/speed_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="115dp"
+            android:text="@string/SpeedLimit"
+            android:textColor="@color/txtcolor"
+            android:textSize="25sp"
+            android:visibility="invisible"
+            app:fontFamily="casual" />
+
+        <TextView
+            android:id="@+id/limit_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-110dp"
+            android:text=""
+            android:textColor="@color/txtcolor"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:fontFamily="casual" />
+    </LinearLayout>
+
+
+
+    <View
+        android:id="@+id/line_break"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speed_limitLinearLayout"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <TextView
+        android:id="@+id/journey_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/JourneyStats"
+        android:textColor="@color/txtcolor"
+        android:textSize="30sp"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_break"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <LinearLayout
+        android:id="@+id/journey_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#D8AC76"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journey_stats"
+        app:layout_constraintVertical_bias="0.05">
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/journey1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                android:textSize="18sp"
+                app:fontFamily="casual" />
+
+            <ImageView
+                android:id="@+id/write_logo1"
+                android:layout_width="27dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="2.017"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.974"
+                app:srcCompat="@drawable/write_symb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/driver_type1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="8dp"
+                android:text="@string/DriverType"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/average_speed1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:gravity="end"
+                android:text="@string/Averagespeed"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/journey_linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#CFA573"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journey_linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/journey2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                android:textSize="18sp"
+                app:fontFamily="casual" />
+
+            <ImageView
+                android:id="@+id/write_logo2"
+                android:layout_width="27dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="2.017"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.974"
+                app:srcCompat="@drawable/write_symb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#CFA573"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/driver_type2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="8dp"
+                android:text="@string/DriverType"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/average_speed2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:drawablePadding="8dp"
+                android:gravity="end"
+                android:text="@string/Averagespeed"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/journey_linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#D8AC76"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journey_linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/journey3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                android:textSize="18sp"
+                app:fontFamily="casual" />
+
+            <ImageView
+                android:id="@+id/write_logo3"
+                android:layout_width="27dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="2.017"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.974"
+                app:srcCompat="@drawable/write_symb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/driver_type3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="8dp"
+                android:text="@string/DriverType"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/average_speed3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:drawablePadding="8dp"
+                android:gravity="end"
+                android:text="@string/Averagespeed"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/journey_linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#CFA573"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journey_linearLayout3"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/journey4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                android:textSize="18sp"
+                app:fontFamily="casual" />
+
+            <ImageView
+                android:id="@+id/write_logo4"
+                android:layout_width="27dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="2.017"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.974"
+                app:srcCompat="@drawable/write_symb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/journey_linearLayoutHorizontal7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/driver_type4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="8dp"
+                android:text="@string/DriverType"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/average_speed4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:drawablePadding="8dp"
+                android:gravity="end"
+                android:text="@string/Averagespeed"
+                android:textColor="@color/txtwhte"
+                app:fontFamily="casual" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/more_journeyDetails"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="@string/MoreDetails"
+        android:textColor="@color/txtwhte"
+        android:textSize="17sp"
+        app:backgroundTint="#CFA573"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+    </Button>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rename_cardView"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:backgroundTint="#B67323"
+        app:cardBackgroundColor="#615F5C"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/line_break"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/card_viewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/rename_journey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:text="@string/RenameJourney"
+                android:textColor="@color/txtwhte"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <EditText
+                android:id="@+id/rename_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/txtgry"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                app:layout_constraintBottom_toBottomOf="@+id/rename_journey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <LinearLayout
+                android:id="@+id/horizontal_rename"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="12dp"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/confirm_rename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="@string/Confirm"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+                <Button
+                    android:id="@+id/ignore_rename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="@string/Ignore"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/journey_limitExceeded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval"
+        android:text="@string/JourneyLimit"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:backgroundTint="#D8AC76"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/start_journey"
+        app:layout_constraintVertical_bias="0.19"
+        app:srcCompat="@drawable/oval" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

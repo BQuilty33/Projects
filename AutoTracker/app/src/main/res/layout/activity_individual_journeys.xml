@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9C3AA"
+    android:orientation="vertical"
+    tools:context=".IndividualJourneysActivity">
+
+    <LinearLayout
+        android:id="@+id/vertical_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#626363"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/search_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#626363"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_back"
+                android:layout_width="74dp"
+                android:layout_height="35dp"
+                android:background="#626363"
+                android:gravity="center"
+                android:paddingTop="9dp"
+                app:srcCompat="@drawable/ic_back" />
+
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#626363" />
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/search_view">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/journeys_recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                tools:context=".IndividualJourneysActivity">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+    =
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/journey_details_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/txtgry"
+        android:visibility="invisible"
+        app:layout_constraintHeight_percent="0.8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintHeight_percent="0.4"
+            android:id="@+id/layout_overall_stats"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                app:layout_constraintHeight_percent="0.4"
+                android:id="@+id/layout_horizontal_individual">
+
+                <TextView
+                    android:id="@+id/exit_journey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:gravity="left"
+                    android:text=" X"
+                    android:textColor="@color/txtcolor"
+                    android:textSize="30sp"
+                    app:fontFamily="casual" />
+
+                <TextView
+                    android:id="@+id/title_journey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/title_individual_journey"
+                    android:textColor="@color/txtcolor"
+                    android:textSize="30sp"
+                    app:fontFamily="casual" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/distance_travelled_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:layout_gravity="center"
+                android:text="distance travelled : 50KM"
+                android:textColor="@color/txtcolor"
+                android:textSize="20dp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/average_speed_text"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="average speed : 50KM/H"
+                android:textColor="@color/txtcolor"
+                android:textSize="20dp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/driver_type_individual"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="driver type : Normal"
+                android:paddingTop="10dp"
+                android:textColor="@color/txtcolor"
+                android:textSize="20dp"
+                app:fontFamily="casual" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/layout_driver_types"
+            app:layout_constraintTop_toBottomOf="@+id/layout_overall_stats">>
+
+            <TextView
+                android:id="@+id/driver_types"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/driver_types"
+                android:textColor="@color/txtcolor"
+                android:textSize="28sp"
+                app:fontFamily="casual" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/piechart_driverType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="2dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="left|center" >
+
+                    <TextView
+                        android:id="@+id/driver_slow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Slow : "
+                        android:gravity="left|center"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20dp"
+                        app:fontFamily="casual" />
+
+                    <TextView
+                        android:id="@+id/driver_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="left|center"
+                        android:text="Normal : "
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20dp"
+                        app:fontFamily="casual" />
+
+                    <TextView
+                        android:id="@+id/driver_aggressive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Aggressive : "
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20dp"
+                        app:fontFamily="casual" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--Linear layout to display pie chart -->
+    <!-- and details of pie chart-->
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rename_cardView"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:backgroundTint="#B67323"
+        app:cardBackgroundColor="#615F5C"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/card_viewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/rename_journey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:text="Rename the Journey"
+                android:textColor="@color/txtwhte"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <EditText
+                android:id="@+id/rename_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/txtgry"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/txtwhte"
+                app:layout_constraintBottom_toBottomOf="@+id/Renam"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <LinearLayout
+                android:id="@+id/horizontal_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/confirm_rename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="Confirm"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+                <Button
+                    android:id="@+id/ignore_rename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="Ignore"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/delete_cardView"
+        android:layout_width="300dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:backgroundTint="#B67323"
+        app:cardBackgroundColor="#615F5C"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/card_viewLayoutdelete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:text="Delete Journey"
+                android:textColor="@color/txtwhte"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+
+            <LinearLayout
+                android:id="@+id/horizontal_layoutDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/confirm_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="Confirm"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+                <Button
+                    android:id="@+id/ignore_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="Ignore"
+                    android:textColor="@color/txtwhte"
+                    android:textSize="17sp"
+                    app:backgroundTint="#81807F"
+                    app:fontFamily="casual" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

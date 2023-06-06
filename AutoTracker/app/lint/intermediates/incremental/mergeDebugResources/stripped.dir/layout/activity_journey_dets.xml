@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9C3AA"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".JourneyDetailsActivity">
+
+    <LinearLayout
+        android:id="@+id/stats_linearLayoutHeading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="74dp"
+            android:layout_height="35dp"
+            android:paddingTop="9dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_back" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/stats_heading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/stats"
+        android:textColor="@color/txtcolor"
+        android:textSize="33sp"
+        app:fontFamily="casual"
+        app:layout_constraintHeight_percent="0.075"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <LinearLayout
+        android:id="@+id/stats_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_linearLayoutHeading"
+        app:layout_constraintVertical_bias="0.015">
+
+        <TextView
+            android:id="@+id/distance_travelled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Distance Travelled : "
+            android:textColor="@color/txtcolor"
+            android:textSize="15sp"
+            app:fontFamily="casual" />
+
+        <TextView
+            android:id="@+id/driver_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driver Type : "
+            android:gravity="end"
+            android:textColor="@color/txtcolor"
+            android:textSize="15sp"
+            app:fontFamily="casual" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stats_linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_linearLayout"
+        app:layout_constraintVertical_bias="0.015">
+
+        <TextView
+            android:id="@+id/average_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Average Speed : 50km"
+            android:textColor="@color/txtcolor"
+            android:textSize="15sp"
+            app:fontFamily="casual" />
+
+        <TextView
+            android:id="@+id/number_of_journeys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Number of Journeys : "
+            android:textColor="@color/txtcolor"
+            android:textSize="15sp"
+            app:fontFamily="casual" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/driver_typesHeading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/driver_types"
+        android:textColor="@color/txtcolor"
+        android:textSize="28sp"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_linearLayout2"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <!--Linear layout to display pie chart -->
+    <!-- and details of pie chart-->
+
+    <LinearLayout
+        android:id="@+id/driver_typeLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.23"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/driver_typesHeading"
+        app:layout_constraintVertical_bias="0">
+
+        <!--Pie chart to display the data-->
+
+        <org.eazegraph.lib.charts.PieChart
+            android:id="@+id/piechart_driverType"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:padding="6dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/driver_slow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="25dp"
+                android:gravity="end"
+                android:text="Slow : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/driver_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="Normal : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/driver_aggressive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="Aggressive : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/average_speed_heading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/avg_speed"
+        android:textColor="@color/txtcolor"
+        android:textSize="28sp"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/driver_typeLinearLayout"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/average_speedLinearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/average_speed_heading"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHeight_percent="0.29">
+
+        <!--Pie chart to display the data-->
+
+        <org.eazegraph.lib.charts.PieChart
+            android:id="@+id/piechart_averageSpeed"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:padding="6dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/zerokm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="15dp"
+                android:gravity="end"
+                android:text="0 - 50km/h : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/fiftykm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="50 - 100km/h : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/hundredkm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="100 - 200km/h : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+            <TextView
+                android:id="@+id/twohundredkm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="200km/h+ : "
+                android:textColor="@color/txtcolor"
+                android:textSize="17sp"
+                app:fontFamily="casual" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/individual_journeyStats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Individual Journey Stats   ➦"
+        android:textColor="@color/txtwhte"
+        android:textSize="17sp"
+        app:backgroundTint="#CFA573"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.075"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/average_speedLinearLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,174 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    //id 'com.chaquo.python'  // Must come after com.android.application
+    id "io.spring.dependency-management" version "1.0.3.RELEASE"
+    id "androidx.navigation.safeargs.kotlin"
+}
+
+afterEvaluate {
+    def assetsSrcDir = "src/main/assets/source"
+    delete assetsSrcDir
+    mkdir assetsSrcDir
+}
+
+android {
+    compileSdkVersion 31
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // *** Replace in public repository **********************************
+        // Final digit of versionCode is 0 for -SNAPSHOT builds in this repo, and 1 for released
+        // builds in the public repo.
+        // **********************************************************************
+
+
+        dataBinding {
+            enabled = true
+        }
+
+        buildFeatures {
+            viewBinding true
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+
+        // Chaquopy generates extra internal-use constructors on static proxy classes.
+        lintOptions {
+            disable "ValidFragment"
+        }
+
+        // Remove other languages imported from Android support libraries.
+        resConfigs "en"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // *** Remove in public repository ***************************************
+    // For testing with minifyEnabled (see release/README.md).
+    buildTypes {
+        releaseMinify {
+            initWith release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            initWith debug
+        }
+    }
+
+    def keystore = file('../chaquo.jks')
+    if (keystore.exists()) {
+        signingConfigs {
+            config {
+                storeFile keystore
+                keyAlias 'key0'
+                keyPassword 'android'
+                storePassword 'android'
+            }
+        }
+        buildTypes.all { it.signingConfig signingConfigs.config }
+    }
+
+    sourceSets {
+        for (path in [
+                "../../product/runtime/src/test",   // Unit tests
+                "src/utils"                         // Files shared with pkgtest app
+        ]) {
+            main {
+                java { srcDir "$path/java" }
+                res { srcDir "$path/res" }
+            }
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    // **********************************************************************
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // appcompat version 1.2.0 is required to fix an incompatibility with WebView on API level
+    // 21 (https://stackoverflow.com/questions/41025200).
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation "com.google.android.material:material:1.3.0"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0' //Location dependency
+    implementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation 'org.jpmml:pmml-evaluator:1.6.4'
+    implementation 'org.pmml4s:pmml4s_2.11:1.0.1'
+    // For Card view
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation 'androidx.test:rules:1.5.0'
+
+// Chart and graph library
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'androidx.test.ext:junit:1.1.5'
+    implementation 'junit:junit:4.12'
+    implementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    implementation files('libs/weka-android-release.aar')
+
+
+    // CameraX Lifecycle library
+    //implementation "androidx.camera:camera-lifecycle:$camerax_version"
+
+    def camerax_version = '1.1.0-beta03'
+    implementation "androidx.camera:camera-core:$camerax_version"
+
+    // CameraX Camera2 extensions
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+
+    // CameraX Lifecycle library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+
+    // CameraX View class
+    implementation "androidx.camera:camera-view:$camerax_version"
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1' // dependency file for RecyclerView
+
+    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.4.0'
+    // Import the GPU delegate plugin Library for GPU inference
+    implementation 'org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.0'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.9.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+
+    testImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+
+
+    testImplementation 'org.mockito:mockito-core:2.19.0'
+
+    testImplementation "org.robolectric:robolectric:4.9.2"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha04'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.1.0')
+}

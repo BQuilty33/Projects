@@ -1,0 +1,7 @@
+uuid
+SQLAlchemy
+Flask
+db-sqlite3
+Flask-SocketIO
+python-dateutil
+werkzeug

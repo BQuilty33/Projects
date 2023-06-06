@@ -1,0 +1,13 @@
+import responses
+
+import googlemaps
+import googlemaps.test as _test
+
+
+responses.add(responses.GET,
+                      "https://roads.googleapis.com/v1/speedLimits",
+                      body='{"speedLimits":["foo"]}',
+                      status=200,
+                      content_type="application/json")
+
+results = self.client.snapped_speed_limits([(1, 2),(3, 4)])

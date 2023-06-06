@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">AutoTracker</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="my_text"><u>AutoTracker</u></string>
+    <string name="stats"><u>Overall Stats</u></string>
+    <string name="driver_types"><u>Driver Types</u></string>
+    <string name="avg_speed"><u>Average Speed</u></string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_journey_details">JourneyDetails</string>
+    <string name="title_activity_journey_dets">JourneyDetsActivity</string>
+    <string name="title_individual_journey"><u>Journey 1</u></string>
+    <string name="Accelerometer">Accelerometer</string>
+    <string name="StartJourney">▶︎ Start the journey</string>
+    <string name="DetectObjects">▶︎ Detect Objects</string>
+    <string name="VehicleSpeed">Speed of vehicle: </string>
+    <string name="SpeedLimit">Speed limit: </string>
+    <string name="JourneyStats">Journey Stats</string>
+    <string name="DriverType">Driver Type:</string>
+    <string name="Averagespeed">Average speed:</string>
+    <string name="MoreDetails">More details   ➦</string>
+    <string name="RenameJourney">Rename the Journey</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Ignore">Ignore</string>
+    <string name="JourneyLimit">Journey limit exceeded (25, delete journey)</string>
+    <string name="Zero">0</string>
+</resources>

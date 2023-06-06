@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CA304_Chat_App</title>
+  <link rel="stylesheet" type = "text/css" href="stylesheet1.css" >
+</head>
+<!-- Set background color + set message fields-->
+<body style="background-color: #1e3d59;">
+  <h1 id = "frsttle" style="color : #ff6e40; font-family: Helvetica, sans-serif; font-size : 34px; position: fixed; right: 1050px; top:0px; ">General</h1>
+  <h1 style="color : #ff6e40; font-family: Helvetica, sans-serif; font-size : 34px; position: fixed; right: 860px; top:0px; ">Chat Room</h1>
+  <div class = "messages" style="width:900px;background-color: #f5f0e1; height:450px;position:fixed;top: 70px;line-height:3em;overflow:auto;padding:5px; border-width:5px; border-style:solid;"">
+    <style>
+      div[class=messages]{
+      border-image: linear-gradient(to right, red , yellow);
+      border-image-slice: 1;
+      }
+    </style>  
+  </div>  
+  <div class = "messages2" style="width:400px;background-color: #b85042; height:450px;position:fixed;top: 70px;right:20px;line-height:3em;overflow:auto;padding:5px; border-width:5px; border-style:solid;"">
+    <style>
+      div[class=messages2]{
+      border-image: linear-gradient(to right, red , yellow);
+      border-image-slice: 1;
+      }
+    </style>  
+    <form>
+      <div class="container">
+        <form action="action_page.php">
+          <div class="row">
+          </div>
+        </form>
+      </div>
+      <style>
+        div[class=container]{
+          background-color: #e7e8d1;
+          position: relative;
+          top: -18px;
+        }
+      </style>
+    </form>
+  </div>  
+  <!-- Set background color -->
+  <h1 style="color : #ff6e40; font-family: Helvetica, sans-serif; font-size : 34px; position: fixed; right: 175px; top:0px; ">Rooms</h1>
+  <!-- Buttons for creating room and exiting createroom form -->
+  <div class="login-box" id = "creater-box">
+    <h2 style="position: relative; left: 100px; top: -25px;color: #5e001f;">Create-Room</h2>
+    <p style="font-size:20px; text-indent: -15px;position: relative; top: 7px;text-decoration: underline;">RoomName</p>
+    <form>
+      <div class="user-box" >
+        <input type="text" class="roocre" name="" required="" size="30" style="height:20px; position:relative; right: 20px; top: 2px;">
+        <!-- add functionality(exitcreate()) -->
+        <button type="button" id = "exitcr" onclick="exitcreate()" >X</button>
+        <!-- Style both buttons -->
+        <style>
+          button[id=exitcr]{
+            position: fixed;
+            left: 20px; 
+            height: 25px;
+            top: 10px;
+          }
+        </style>
+        <!-- add functionality(createtheroom(),exitcreate()) -->
+        <button type="button" id = "creeat" onclick="createtheroom(), exitcreate()">Create</button>
+        <style>
+          button[id=creeat]{
+          height:30px;
+          width: 100px;
+          position: fixed;
+          display:inline-block;
+          padding:0.35em 1.2em;
+          border:0.1em solid #FFFFFF;
+          margin:0 0.3em 0.3em 0;
+          border-radius:0.12em;
+          box-sizing: border-box;
+          text-decoration:none;
+          font-family:'Roboto',sans-serif;
+          font-weight:300;
+          color:#FFFFFF;
+          text-align:center;
+          transition: all 0.2s;
+          }
+          button[id=creeat]:hover{
+          color:#000000;
+          background-color:#FFFFFF;
+          }
+          @media all and (max-width:30em){
+          button[id=creeat]{
+          display:block;
+          margin:0.4em auto;
+          }
+          }
+        </style>
+      </div>
+    </form>
+  </div>
+  <style>
+    .login-box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: #00e1d9;
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+  </style>
+  <!-- Button for leaving room and exit leftroom form -->
+  <div class="leave-box" id = "room-left">
+    <h2 style="position: relative; left: 140px; top: -2px;color: #5e001f;">Left Room</h2>
+    <form>
+      <div class="user-box" >
+        <!-- add functionality(exitleft()) -->
+        <button type="button" id = "exitcr" onclick="exitleft()" >X</button>
+        <!-- Style both buttons -->
+        <style>
+          button[id=exitcr]{
+            position: fixed;
+            left: 20px; 
+            height: 25px;
+            top: 10px;
+          }
+        </style>
+        <style>
+          button[id=creeat]{
+          height:30px;
+          width: 100px;
+          position: fixed;
+          display:inline-block;
+          padding:0.35em 1.2em;
+          border:0.1em solid #FFFFFF;
+          margin:0 0.3em 0.3em 0;
+          border-radius:0.12em;
+          box-sizing: border-box;
+          text-decoration:none;
+          font-family:'Roboto',sans-serif;
+          font-weight:300;
+          color:#FFFFFF;
+          text-align:center;
+          transition: all 0.2s;
+          }
+          button[id=creeat]:hover{
+          color:#000000;
+          background-color:#FFFFFF;
+          }
+          @media all and (max-width:30em){
+          button[id=creeat]{
+          display:block;
+          margin:0.4em auto;
+          }
+          }
+        </style>
+      </div>
+    </form>
+  </div>
+  <style>
+    .leave-box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 10px;
+      transform: translate(-50%, -50%);
+      background: #00e1d9;
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+  </style>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script type="text/javascript" async>
+    // Script
+    const rooms = {};
+    const roomid = {};
+    var your_room = "";
+    //client connects to server
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    //called when client connects
+    socket.on( 'connect', function() {
+      // join room and get list of all rooms in server
+      your_room = "general";
+      socket.emit('join',{room: "general"});
+      socket.emit('listroomsfrst');
+    } )
+      //Send this event to everyone in the room.
+    function joinaroom(ro_na)
+    {
+      console.log(ro_na);
+      console.log(your_room);
+      //change room title
+      document.getElementById("frsttle").innerHTML = ro_na;
+      //leave and join room
+      socket.emit('leave',{room: your_room});
+      your_room = ro_na;
+      socket.emit('join',{room: ro_na});
+    }
+    // function for sending a message
+    function sendmess()
+    {
+        let user_n = $('input.usname').val();
+        let user_inp = $('input.mssg').val();
+        socket.emit('send message', {"message" : user_inp, "username" : user_n, "room": your_room});
+    }
+    //function for leaving a room
+    function leaveR()
+    {
+      socket.emit('leave',{room: your_room});
+      your_room = "";
+      var hu = document.getElementById("room-left");
+      hu.style.display = "block";
+    }
+    //create room
+    function createtheroom()
+    {
+      let room_t_j = $('input.roocre').val();
+      // leave current room + join new room from create-room field
+      socket.emit('leave',{room: your_room});
+      your_room = room_t_j;
+      document.getElementById("frsttle").innerHTML = room_t_j;
+      socket.emit('create',{room: room_t_j});
+      socket.emit('listrooms',{"room": room_t_j});
+    }
+    // show form for creating the room.
+    function showcreate()
+    {
+      var y = document.getElementById("creater-box");
+      y.style.display = "block";
+    }
+    //exit form for creating the room
+    function exitcreate()
+    {
+      var z = document.getElementById("creater-box");
+      z.style.display = "none";
+    }
+    //exit form for leaving a room
+    function exitleft()
+    {
+      var u = document.getElementById("room-left");
+      u.style.display = "none";
+    }
+    // listen for server sending a message
+    socket.on('broadcast message', function( msg ) {
+      console.log(msg.message);
+      let user_n1 = $('input.usname').val();
+      let msgusn = msg.username.concat(":");
+      console.log(msg.message);
+      // add to text fields
+      if($('input.usname').val() == msg.username){
+        $( 'div.messages' ).append( '<div><b style="color: #ff6e40; font-family : Impact;font-size : 25px;">' + msgusn +   '</b> ' + '<b>' + "    ‎‎‎‎‎‏‏‎ ‎ " + '<b style = "color: #F5BC38; font-family : Impact;font-size : 25px;"" >'+msg.message + '</div>' )
+      }
+      else{
+        $( 'div.messages' ).append( '<div><b style=" color: #F5BC38; font-family : Impact;font-size : 25px; float:right; padding-right:100px;">'  + msg.message +  '</b> ' + '<b>' + "    ‎‎‎‎‎‏‏‎ ‎ " + '<b style = " color: #ff6e40; font-family : Impact;font-size : 25px;float:right; "" >'+msgusn + '</div>' )
+      }
+    })
+    // listen in case of server wanting to list all rooms
+    socket.on('listrooms', function( msg ) {
+      console.log("roomnu");
+      let roomnu = msg.room;
+      //create unique id for each room
+      var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+      var uniqid = randLetter + Date.now();
+      console.log(uniqid);
+      // add to list of rooms
+      $( 'div.row' ).append( '<h1 id= "' + uniqid + '" style="color : #a7beae; font-family: sans-serif; font-size : 24px; text-align: center; position: relative ; top:7px;">')
+      document.getElementById(uniqid).innerHTML = msg.room + " chat room";
+      var randLetter2 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+      var uniqid2 = randLetter + Date.now();
+      console.log(uniqid2);
+      $( 'div.row' ).append( ' <button type="button" id="' + uniqid2 + '" onclick ="leaveR(),joinaroom(\'' + msg.room + '\')"   >Join-Room</button> <style> button[id="' + uniqid2 + '"]{height:30px;width: 130px;position: relative;left: 120px;top:-5px;display:inline-block;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;margin:0 0.3em 0.3em 0;border-radius:0.12em;box-sizing: border-box;text-decoration:none;font-family:"Roboto",sans-serif;font-weight:300;color:#FFFFFF;text-align:center;transition: all 0.2s;}button[id="' + uniqid2 + '"]:hover{color:#000000;background-color:#FFFFFF;}@media all and (max-width:30em){button[id="' + uniqid2 + '"]{display:block;margin:0.4em auto;}</style>' )
+    })
+    socket.on('listroomsfrsty', function( msg ) {
+      let roomnu = msg.rooms[0];
+      console.log(msg.rooms.length);
+      //loop through all the current rooms.
+      for (let i = 0; i < msg.rooms.length; i++) { 
+        //create unique id for each room
+        var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+        var uniqid = randLetter + Date.now();
+        // add room to rooms list
+        $( 'div.row' ).append( '<h1 id= "' + uniqid + '" style="color : #a7beae; font-family: sans-serif; font-size : 24px; text-align: center; position: relative ; top:7px;">' )
+        document.getElementById(uniqid).innerHTML = msg.rooms[i] + " chat room";
+        var randLetter2 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+        var uniqid2 = randLetter + Date.now();
+        console.log(msg.rooms[i]);
+        //add functionality with appropriate function(leaveroom and joinroom)
+        $( 'div.row' ).append(' <button type="button" id = "' + uniqid2 + '" onclick ="leaveR(), joinaroom(\'' + msg.rooms[i] + '\')"   >Join-Room</button> <style> button[id=' + uniqid2 + ']{height:30px;width: 130px;position: relative;left: 120px;top:-5px;display:inline-block;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;margin:0 0.3em 0.3em 0;border-radius:0.12em;box-sizing: border-box;text-decoration:none;font-family:"Roboto",sans-serif;font-weight:300;color:#FFFFFF;text-align:center;transition: all 0.2s;}button[id=' + uniqid2 + ']:hover{color:#000000;background-color:#FFFFFF;}@media all and (max-width:30em){button[id=' + uniqid2 + ']{display:block;margin:0.4em auto;}</style>')
+        var ididi = i ;
+        console.log(uniqid2);
+      }
+    })
+    var x = document.getElementById("creater-box");
+    x.style.display = "none";
+    var hu = document.getElementById("room-left");
+    hu.style.display = "none";
+  </script>
+  <!-- Chat section-->
+  <section id="chat">
+    <section id="message">
+    </section>
+     <!-- Fields for username + message  + sendmessage(including styling)-->
+    <section id="input">
+        <input type="text" class="usname" size="40"  placeholder="User Name"/>
+        <style>
+          input[class=usname]{
+            height:25px;
+            position: fixed;
+            top: 570px;
+            border: 2px solid #d2601a;
+            background-color: #fff1e1;
+            right: 1025px;
+          }
+        </style>
+        <input type="text" class="mssg" size="40" placeholder="Messages"/><div style = "height:200px; position:static; left:160px; top:1072px;">
+        <style>
+          input[class=mssg]{
+            height:25px;
+            position: fixed;
+            top: 620px;
+            border: 2px solid #d2601a;
+            background-color: #fff1e1;
+            right: 1025px;
+          }
+        </style>
+        <!-- add functionality(sendmess()) -->
+        <button type="button" id="send-button" onclick="sendmess()" >send message</button><div style = "height:200px; position:static; left:16s0px; top:772px;">
+          <style>
+            button[id=send-button]{
+            height:30px;
+            position: fixed;
+            top: 620px;
+            right: 897px;
+            display:inline-block;
+            padding:0.35em 1.2em;
+            border:0.1em solid #FFFFFF;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.12em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            font-weight:300;
+            color:#FFFFFF;
+            text-align:center;
+            transition: all 0.2s;
+            }
+            button[id=send-button]:hover{
+            color:#000000;
+            background-color:#FFFFFF;
+            }
+            @media all and (max-width:30em){
+            button[id=send-button]{
+            display:block;
+            margin:0.4em auto;
+            }
+            }
+          </style>
+        <!-- Button for creating the room , add functionality(showcreate())-->
+        <button type="button" id="create-room" onclick="showcreate()" >create-room</button><div>
+        <!-- Style button -->
+        <style>
+    /* CSS */
+        button[id=create-room] {
+          font-family: "Open Sans", sans-serif;
+          font-size: 16px;
+          width: 225px;
+          height:40px;
+          letter-spacing: 2px;
+          text-decoration: none;
+          text-transform: uppercase;
+          color: #000;
+          cursor: pointer;
+          border: 3px solid;
+          padding: 0.25em 0.5em;
+          box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          position: fixed; 
+          right:60px; 
+          top:660px;
+        }
+
+        button[id=create-room]:active {
+          box-shadow: 0px 0px 0px 0px;
+        }
+
+    @media (min-width: 768px) {
+      .button-54 {
+        padding: 0.25em 0.75em;
+      }
+    }
+        </style>
+        <!-- Create button for leaving the room, add functionality leaveRoom()-->
+        <button type="button" id="leave-room" onclick="leaveR()" >leave-room</button><div>
+        <!-- Style the button -->
+        <style>
+    /* CSS */
+        button[id=leave-room] {
+          font-family: "Open Sans", sans-serif;
+          font-size: 16px;
+          width: 225px;
+          height:40px;
+          letter-spacing: 2px;
+          text-decoration: none;
+          text-transform: uppercase;
+          color: #000;
+          cursor: pointer;
+          border: 3px solid;
+          padding: 0.25em 0.5em;
+          box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          position: fixed; 
+          right:60px; 
+          top:612px;
+        }
+        button[id=leave-room]:active {
+          box-shadow: 0px 0px 0px 0px;
+        }
+
+    @media (min-width: 768px) {
+      .button-54 {
+        padding: 0.25em 0.75em;
+      }
+    }
+        </style>
+    </section>
+</section>
+
+</body>
+</html>
